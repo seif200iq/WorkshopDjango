@@ -1,7 +1,7 @@
 from django.contrib import admin
-from .models import USER
-from .models import ORGANIZINGCOMITEE
+from .models import User
+from ConferenceApp.models import OrganizingCommittee
 
 # Register your models here.
-admin.site.register(USER)
-admin.site.register(ORGANIZINGCOMITEE)
+admin.site.register(User)
+admin.site.register(OrganizingCommittee)

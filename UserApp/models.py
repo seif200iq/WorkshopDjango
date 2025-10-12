@@ -18,9 +18,9 @@ name_validator=RegexValidator(
     message="ce champs ne doit cntenir que des lettres et des espaces"
 )
 
-class USER(AbstractUser):
+class User(AbstractUser):
     user_id=models.CharField(max_length=8,primary_key=True,unique=True,editable=False)
-    first_name=models.CharField(max_length=255)
+    first_name=models.CharField(max_length=255,validators=[name_validator])
     last_name=models.CharField(max_length=255,validators=[name_validator])
     ROLE=[
         ("participant","participant"),
@@ -35,22 +35,10 @@ class USER(AbstractUser):
     def save(self,*args,**kwargs):
         if not self.user_id: #ferga nexiste pas
             newid=generate_user_id()
-            while USER.objects.filter(user_id=newid).exists():
+            while User.objects.filter(user_id=newid).exists():
                 newid=generate_user_id()
             self.user_id=newid
         super().save(*args,**kwargs)
 
 
 
-class ORGANIZINGCOMITEE(models.Model):
-    chair = [
-        ('chair','chair'),
-        ('co-chair','co-chair'),
-        ('member','member')
-    ]
-    commitee_role = models.CharField(max_length=255,choices=chair)
-    join_date = models.DateField()
-    created_at = models.DateTimeField(auto_now_add=True)
-    updated_at = models.DateTimeField(auto_now=True)
-    user = models.ForeignKey("UserApp.USER",on_delete=models.CASCADE,related_name='committees')
-    conference = models.ForeignKey('ConferenceApp.Conferance',on_delete=models.CASCADE,related_name='committees')
