@@ -1,0 +1,49 @@
+{
+    "servers": {
+        "sayHELLO": {
+            "type": "stdio",
+            "command": "uv",
+            "args": [
+                "--directory",
+                "C:\\Users\\Mega-Pc\\OneDrive - ESPRIT\\Bureau\\uv",
+                "run",
+                "main.py"
+            ]
+        },
+        "mathOperations": {
+            "command": "uv",
+            "args": [
+                "--directory",
+                "C:\\Users\\Mega-Pc\\OneDrive - ESPRIT\\Bureau\\uv",
+                "run",
+                "calculator.py"
+            ]
+        },"flightInfo": {
+            "command": "python",
+            "args": [
+                "--directory",
+                "C:\\Users\\Mega-Pc\\OneDrive - ESPRIT\\Bureau\\uv",
+                "run",
+                "flights_server.py"
+            ]
+        },
+        "openLibrary": {
+            "command": "python",
+            "args": [
+                "--directory",
+                "C:\\Users\\Mega-Pc\\OneDrive - ESPRIT\\Bureau\\uv",
+                "run",
+                "openlibrary_mcp.py"
+            ]
+        },
+        "conferenceServer": {
+            "type": "stdio",
+            "command": "uv",
+            "args": [
+                "run",
+                "mcp_server.py"
+            ]
+        }
+
+    }
+}
